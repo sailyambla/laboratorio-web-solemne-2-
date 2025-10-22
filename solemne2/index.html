@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            height: 100vh;
+            background-color: rgb(245, 184, 184);
+            margin: 0;
+            align-items: center;
+            justify-content: center;    
+        }
+        .relo{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            position: relative;
+            padding: 70px;
+            background-color: rgb(255, 255, 255);
+            
+        }
+        .relo-relo{
+            position: relative;
+            width: 50%;
+            height: 50%;
+            transform: translateY(-3px); 
+        }
+        .palito {
+            width: 100%;
+            background: rgb(11, 195, 219);
+            position: absolute;
+            top: 100%;
+            transform-origin: 100%;
+            transform: rotate(90deg);
+            transition: all 0.05s;
+        }
+         .hora-palito { height: 8px; 
+        }
+         .minutito-palito { height: 6px; 
+        }
+         .segundito-palito { height: 2px; background: blue; 
+        }
+         .number {
+            position: absolute;
+            font-size: 15px;
+            transform: translate(-50%, -50%);
+        }
+        .number1  { top: -80%; left: 190%; }
+        .number2  { top: -15%; left: 270%; }
+        .number3  { top: 90%; left: 300%; }
+        .number4  { top: 190%; left: 280%; }
+        .number5  { top: 280%; left: 200%; }
+        .number6  { top: 300%; left: 95%; }
+        .number7  { top: 280%; left: -10%; }
+        .number8  { top: 190%; left: -90%; }
+        .number9  { top: 90%; left: -100%; }
+        .number10 { top: 10%; left: -80%; }
+        .number11 { top: -70%; left: -10%; }
+        .number12 { top: -100%; left: 95%; }
+    </style>
+</head>
+<body>
+    <div class="relo">
+        <div class="relo-relo">
+            <div class="palito hora-palito" id="hora-palito"></div>
+            <div class="palito minutito-palito" id="minutito-palito"></div>
+            <div class="palito segundito-palito" id="segundito-palito"></div>
+            <div class="number number1">1</div>
+            <div class="number number2">2</div>
+            <div class="number number3">3</div>
+            <div class="number number4">4</div>
+            <div class="number number5">5</div>
+            <div class="number number6">6</div>
+            <div class="number number7">7</div>
+            <div class="number number8">8</div>
+            <div class="number number9">9</div>
+            <div class="number number10">10</div>
+            <div class="number number11">11</div>
+            <div class="number number12">12</div>
+        </div>
+    </div>
+    <script>
+        function setClock() {
+            const now = new Date();
+            const seconds = now.getSeconds(1000);
+            const minutes = now.getMinutes(60);
+            const hours = now.getHours(12);
+            const secondDeg = ((seconds / 60) * 360) + 90;
+            const minuteDeg = ((minutes / 60) * 360) + 90;
+            const hourDeg = ((hours / 12) * 360) + 90;
+
+            document.getElementById("segundito-palito").style.transform = `rotate(${secondDeg}deg)`;
+            document.getElementById("hora-palito").style.transform = `rotate(${hourDeg}deg)`;
+            document.getElementById("minutito-palito").style.transform = `rotate(${minuteDeg}deg)`;
+        }
+
+        setInterval(setClock, 1000);
+        setClock();
+        
+    </script>
+
+</body>
+</html> 
